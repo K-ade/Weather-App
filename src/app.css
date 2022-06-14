@@ -1,0 +1,132 @@
+body {
+  border: 2px solid #bbdb97;
+  width: 550px;
+  border-radius: 250px;
+  margin: 40px auto;
+  font-family: "Poppins", sans-serif;
+}
+h1 {
+  font-size: 100px;
+  position: relative;
+  top: 40px;
+  left: 100px;
+}
+h2 {
+  font-size: 55px;
+  position: relative;
+  top: 80px;
+  left: 80px;
+}
+.current-temp-view {
+  font-weight: 700;
+}
+.windRain {
+  font-size: 16px;
+  line-height: 5px;
+  position: relative;
+  top: 100px;
+  left: 80px;
+}
+.statusBar {
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+  top: 30px;
+}
+.condition {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffa726;
+}
+.forecast {
+  font-size: 12px;
+  padding: 30px 0 10px;
+  text-align: center;
+}
+.forecastEmoji {
+  font-size: 25px;
+}
+.forecastTempHigh {
+  font-size: 20px;
+}
+.forecastTempLow {
+  position: relative;
+  left: 10px;
+  bottom: 10px;
+  color: grey;
+}
+.weekday {
+  font-size: 16px;
+  position: relative;
+  bottom: 10px;
+}
+.firstDay {
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 80px;
+  padding: 2px 0;
+  margin: 0 5px;
+  position: relative;
+  left: 60px;
+}
+.secondDay {
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 80px;
+  padding: 2px 0;
+  position: relative;
+  margin: 0 5px;
+  left: 30px;
+}
+.thirdDay {
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 80px;
+  padding: 2px 0;
+  margin: 0 5px;
+}
+.fourthDay {
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 80px;
+  padding: 2px 0;
+  margin: 0 5px;
+  position: relative;
+  right: 30px;
+}
+.fifthDay {
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 80px;
+  padding: 2px 0;
+  margin: 0 5px;
+  position: relative;
+  right: 60px;
+}
+.searchBar {
+  text-align: center;
+  margin: 20px 100px;
+}
+.find-location {
+  color: #bbdb97;
+  background: #fff;
+  position: relative;
+  left: 140px;
+  bottom: 10px;
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 250px;
+  padding: 2px 0;
+  margin: 5px 5px 10px 5px;
+  box-shadow: 5px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.find-location:hover {
+  background-color: #bbdb97;
+  color: #fff;
+}
+.date {
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  bottom: 10px;
+}
