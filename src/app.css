@@ -103,6 +103,11 @@ h2 {
   position: relative;
   right: 60px;
 }
+
+.day:hover {
+  background-color: #bbdb97;
+  color: #fff;
+}
 .searchBar {
   text-align: center;
   margin: 20px 100px;
