@@ -53,7 +53,7 @@ function updateToFarUnit(event) {
 let farUnit = document.querySelector("#temp-unit-far");
 farUnit.addEventListener("click", updateToFarUnit);
 
-//Search Engine (form bug)
+//Search Engine
 function displayWeather(response) {
   document.querySelector("#userLocation").innerHTML = response.data.name;
   document.querySelector("#current-temp-view").innerHTML = Math.round(
@@ -73,14 +73,15 @@ function searchCity(city) {
   axios.get(apiUrl).then(displayWeather);
 }
 
-function runSubmit(event) {
+function runSearch(event) {
   event.preventDefault();
-  let city = document.querySelector("#location-input").value;
+  let cityInput = document.querySelector("#location-input");
+  let city = cityInput.value;
   searchCity(city);
 }
 
-let searchFormSubmit = document.querySelector("#location-submit");
-searchFormSubmit.addEventListener("submit", runSubmit);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", runSearch);
 
 // Default Location (on load)
 searchCity("Vancouver");
