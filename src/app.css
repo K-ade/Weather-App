@@ -5,13 +5,14 @@ body {
   margin: 40px auto;
   font-family: "Poppins", sans-serif;
 }
-h1 {
+img {
   font-size: 100px;
   position: relative;
-  top: 40px;
-  left: 100px;
+  top: 60px;
+  left: 120px;
+  padding: 0 0 28px 0;
 }
-h2 {
+h1 {
   font-size: 55px;
   position: relative;
   top: 80px;

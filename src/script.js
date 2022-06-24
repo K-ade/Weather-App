@@ -65,6 +65,13 @@ function displayWeather(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#condition").innerHTML =
     response.data.weather[0].description;
+
+  console.log(response.data.weather[0].icon);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function searchCity(city) {
@@ -84,7 +91,7 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", runSearch);
 
 // Default Location (on load)
-searchCity("Vancouver");
+searchCity("Cairo");
 
 //Geolocation API
 function findCurrentLocation(position) {
