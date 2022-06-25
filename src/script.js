@@ -31,7 +31,13 @@ function userDate(date) {
   let currentMonth = months[now.getMonth()];
   let currentDay = now.getDate();
   let currentHour = now.getHours();
+  if (currentHour < 10) {
+    let currentHour = `0${currentHour}`;
+  }
   let currentMinute = now.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
   let currentTime = `${currentHour}:${currentMinute} `;
 
   let formattedDateTime = `📅 ${currentWeekday}, ${currentMonth} ${currentDay} ⏰ ${currentTime}`;
