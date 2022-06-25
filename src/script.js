@@ -31,10 +31,18 @@ function userDate(date) {
   let currentMonth = months[now.getMonth()];
   let currentDay = now.getDate();
   let currentHour = now.getHours();
+  let currentMinute = now.getMinutes();
+
+  // Format hours and minutes
   if (currentHour < 10) {
     let currentHour = `0${currentHour}`;
+  } else {
+    if (currentHour > 12) {
+      currentHour = currentHour - 12;
+      currentMinute = `${currentMinute}PM`;
+    }
   }
-  let currentMinute = now.getMinutes();
+
   if (currentMinute < 10) {
     currentMinute = `0${currentMinute}`;
   }
@@ -48,23 +56,12 @@ function userDate(date) {
 let dateTime = document.querySelector("p.date");
 dateTime.innerHTML = userDate(new Date());
 
-//Feature 3: Celsius or Farenheit unit options (dummy info)
-
-function updateToFarUnit(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("h2");
-  currentTemp.innerHTML = "77℉";
-}
-
-let farUnit = document.querySelector("#temp-unit-far");
-farUnit.addEventListener("click", updateToFarUnit);
-
 //Search Engine
 function displayWeather(response) {
   document.querySelector("#userLocation").innerHTML = response.data.name;
-  document.querySelector("#current-temp-view").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  let celsiusTemp = Math.round(response.data.main.temp);
+
+  document.querySelector("#current-temp-view").innerHTML = celsiusTemp;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
@@ -72,12 +69,31 @@ function displayWeather(response) {
   document.querySelector("#condition").innerHTML =
     response.data.weather[0].description;
 
-  console.log(response.data.weather[0].icon);
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  // Convert Celcius to Fahrenheit
+  function updateToFahrenheitUnit(event) {
+    event.preventDefault();
+    let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+    let tempDisplay = document.querySelector("#current-temp-view");
+    tempDisplay.innerHTML = Math.round(fahrenheitTemp);
+  }
+
+  let fahrenheitSelector = document.querySelector("#temp-unit-far");
+  fahrenheitSelector.addEventListener("click", updateToFahrenheitUnit);
+
+  function updateToCelsiusUnit(event) {
+    event.preventDefault();
+    let tempDisplay = document.querySelector("#current-temp-view");
+    tempDisplay.innerHTML = celsiusTemp;
+  }
+
+  let celsiusSelector = document.querySelector("#temp-unit-cel");
+  celsiusSelector.addEventListener("click", updateToCelsiusUnit);
 }
 
 function searchCity(city) {
@@ -96,9 +112,6 @@ function runSearch(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", runSearch);
 
-// Default Location (on load)
-searchCity("Cairo");
-
 //Geolocation API
 function findCurrentLocation(position) {
   let lat = position.coords.latitude;
@@ -115,3 +128,9 @@ function getGeolocation(event) {
 
 let currentLocationButton = document.querySelector("#find-location");
 currentLocationButton.addEventListener("click", getGeolocation);
+
+// Default temp (on load)
+let celsiusTemp = null;
+
+// Default Location (on load)
+searchCity("Tokyo");

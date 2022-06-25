@@ -18,6 +18,13 @@ h1 {
   top: 80px;
   left: 80px;
 }
+.temp-unit {
+  font-size: 22px;
+  position: relative;
+  left: 155px;
+  top: 9px;
+}
+
 .current-temp-view {
   font-weight: 700;
 }
