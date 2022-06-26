@@ -56,7 +56,56 @@ function userDate(date) {
 let dateTime = document.querySelector("p.date");
 dateTime.innerHTML = userDate(new Date());
 
-//Search Engine
+//Search Engine & Forecast
+
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["sun", "mon", "tues", "wed", "thurs", "fri", "sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecastData = response.data.daily;
+  console.log(forecastData);
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class = "col-2 forecast-day">
+            <img class="forecastIcon" src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" alt="" width=45/><br />
+            <strong class="forecastTempHigh">${Math.round(
+              forecastDay.temp.max
+            )}℃</strong> <br />
+            <small class="forecastTempLow">${Math.round(
+              forecastDay.temp.min
+            )}℃</small> <br />
+            <span class="forecast-weekday">${formatForecastDay(
+              forecastDay.dt
+            )}</span>
+        </div>
+        `;
+
+      forecastHTML = forecastHTML + ``;
+      forecastElement.innerHTML = forecastHTML;
+    }
+  });
+}
+
+function getForecast(coordinates) {
+  let apiKey = "86b69b17b94322697d2570908ee20bff";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeather(response) {
   document.querySelector("#userLocation").innerHTML = response.data.name;
   let celsiusTemp = Math.round(response.data.main.temp);
@@ -94,6 +143,8 @@ function displayWeather(response) {
 
   let celsiusSelector = document.querySelector("#temp-unit-cel");
   celsiusSelector.addEventListener("click", updateToCelsiusUnit);
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -111,27 +162,6 @@ function runSearch(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", runSearch);
-
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let days = ["mon", "tues", "wed", "thurs", "fri"];
-  let forecastHTML = `<div class="row">`;
-
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class = "col-2 forecast-day">
-            <img class="forecastIcon" src="http://openweathermap.org/img/wn/02n@2x.png" alt="" width=45/><br />
-            <strong class="forecastTempHigh">10℃</strong> <br />
-            <small class="forecastTempLow">3℃</small> <br />
-            <p><span class="forecast-weekday">${day}</span></p>
-        </div>
-        `;
-
-    forecastHTML = forecastHTML + ``;
-    forecastElement.innerHTML = forecastHTML;
-  });
-}
 
 //Geolocation API
 function findCurrentLocation(position) {
@@ -155,5 +185,3 @@ let celsiusTemp = null;
 
 // Default Location (on load)
 searchCity("Tokyo");
-
-displayForecast();
