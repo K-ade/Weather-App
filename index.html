@@ -21,17 +21,17 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div>
+    <div class="container">
       <div class="row">
         <div class="col-3">
-          <img id="icon"></img>
+          <img class="main-icon" id="icon" />
         </div>
         <div class="col-3" id="currentTemp">
           <h1>
             <span class="current-temp-view" id="current-temp-view"></span>
           </h1>
-          <a class ="temp-unit" id="temp-unit-cel" href=""><small>℃</small></a>
-          <a class ="temp-unit" id="temp-unit-far" href=""><small>℉</small></a>
+          <a class="temp-unit" id="temp-unit-cel" href=""><small>℃</small></a>
+          <a class="temp-unit" id="temp-unit-far" href=""><small>℉</small></a>
         </div>
         <div class="col-3 windRain">
           <p>🌬 <span class="wind" id="wind"></span>km/h</p>
@@ -42,48 +42,7 @@
         Right now, it's <span class="condition" id="condition"></span> in
         <span class="user-location" id="userLocation"></span>
       </p>
-      <div class="row forecast">
-        <div class="col">
-          <p class="firstDay day">
-            <span class="forecastEmoji">☀️</span><br />
-            <strong class="forecastTempHigh">10℃</strong> <br />
-            <small class="forecastTempLow">3℃</small> <br />
-            <span class="weekday">wed</span>
-          </p>
-        </div>
-        <div class="col">
-          <p class="secondDay day">
-            <span class="forecastEmoji">⛅️</span> <br />
-            <strong class="forecastTempHigh">4℃</strong> <br />
-            <small class="forecastTempLow">-2℃</small> <br />
-            <span class="weekday">thurs</span>
-          </p>
-        </div>
-        <div class="col">
-          <p class="thirdDay day">
-            <span class="forecastEmoji">🌧</span> <br />
-            <strong class="forecastTempHigh">12℃</strong> <br />
-            <small class="forecastTempLow">3℃</small> <br />
-            <span class="weekday">fri</span>
-          </p>
-        </div>
-        <div class="col">
-          <p class="fourthDay day">
-            <span class="forecastEmoji">🌦</span> <br />
-            <strong class="forecastTempHigh">9℃</strong> <br />
-            <small class="forecastTempLow">5℃</small> <br />
-            <span class="weekday">sat</span>
-          </p>
-        </div>
-        <div class="col">
-          <p class="fifthDay day">
-            <span class="forecastEmoji">⛅️</span> <br />
-            <strong class="forecastTempHigh">8℃</strong> <br />
-            <small class="forecastTempLow">4℃</small> <br />
-            <span class="weekday">sun</span>
-          </p>
-        </div>
-      </div>
+      <div class="forecast" id="forecast"></div>
       <div>
         <form id="search-form">
           <input
@@ -99,8 +58,10 @@
       <button class="find-location" id="find-location">Current Location</button>
       <p class="date" id="date-time">📅 Monday, May 7 ⏰ 13:45</p>
       <p class="signature">
-        <a href="https://github.com/K-ade/Weather-App">Open-source code</a> by
-        Kade Johnson
+        <a href="https://github.com/K-ade/Weather-App" target="blank"
+          >Open-source code</a
+        >
+        by Kade Johnson
       </p>
       <script src="src/script.js"></script>
     </div>

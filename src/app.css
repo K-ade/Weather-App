@@ -5,19 +5,21 @@ body {
   margin: 40px auto;
   font-family: "Poppins", sans-serif;
 }
-img {
-  font-size: 100px;
-  position: relative;
-  top: 60px;
-  left: 120px;
-  padding: 0 0 28px 0;
-}
+
 h1 {
   font-size: 55px;
   position: relative;
   top: 80px;
   left: 80px;
 }
+.main-icon {
+  font-size: 100px;
+  position: relative;
+  top: 60px;
+  left: 120px;
+  padding: 0 0 28px 0;
+}
+
 .temp-unit {
   font-size: 22px;
   position: relative;
@@ -46,14 +48,24 @@ h1 {
   font-weight: bold;
   color: #ffa726;
 }
+
 .forecast {
-  font-size: 12px;
-  padding: 30px 0 10px;
+  margin: 50px 0 0 20px;
+}
+
+.forecast-day {
   text-align: center;
+  border: 1px solid #bbdb97;
+  border-radius: 35px;
+  width: 80px;
+  padding: 2px 0;
+  margin: 0 10px;
 }
-.forecastEmoji {
-  font-size: 25px;
+.forecast-day:hover {
+  background-color: #bbdb97;
+  color: #fff;
 }
+
 .forecastTempHigh {
   font-size: 20px;
 }
@@ -63,58 +75,10 @@ h1 {
   bottom: 10px;
   color: grey;
 }
-.weekday {
+.forecast-weekday {
   font-size: 16px;
   position: relative;
   bottom: 10px;
-}
-.firstDay {
-  border: 1px solid #bbdb97;
-  border-radius: 35px;
-  width: 80px;
-  padding: 2px 0;
-  margin: 0 5px;
-  position: relative;
-  left: 60px;
-}
-.secondDay {
-  border: 1px solid #bbdb97;
-  border-radius: 35px;
-  width: 80px;
-  padding: 2px 0;
-  position: relative;
-  margin: 0 5px;
-  left: 30px;
-}
-.thirdDay {
-  border: 1px solid #bbdb97;
-  border-radius: 35px;
-  width: 80px;
-  padding: 2px 0;
-  margin: 0 5px;
-}
-.fourthDay {
-  border: 1px solid #bbdb97;
-  border-radius: 35px;
-  width: 80px;
-  padding: 2px 0;
-  margin: 0 5px;
-  position: relative;
-  right: 30px;
-}
-.fifthDay {
-  border: 1px solid #bbdb97;
-  border-radius: 35px;
-  width: 80px;
-  padding: 2px 0;
-  margin: 0 5px;
-  position: relative;
-  right: 60px;
-}
-
-.day:hover {
-  background-color: #bbdb97;
-  color: #fff;
 }
 form {
   text-align: center;

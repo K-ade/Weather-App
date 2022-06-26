@@ -75,7 +75,7 @@ function displayWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  // Convert Celcius to Fahrenheit
+  // Convert Celsius to Fahrenheit
   function updateToFahrenheitUnit(event) {
     event.preventDefault();
     let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
@@ -112,6 +112,27 @@ function runSearch(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", runSearch);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["mon", "tues", "wed", "thurs", "fri"];
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class = "col-2 forecast-day">
+            <img class="forecastIcon" src="http://openweathermap.org/img/wn/02n@2x.png" alt="" width=45/><br />
+            <strong class="forecastTempHigh">10℃</strong> <br />
+            <small class="forecastTempLow">3℃</small> <br />
+            <p><span class="forecast-weekday">${day}</span></p>
+        </div>
+        `;
+
+    forecastHTML = forecastHTML + ``;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
 //Geolocation API
 function findCurrentLocation(position) {
   let lat = position.coords.latitude;
@@ -134,3 +155,5 @@ let celsiusTemp = null;
 
 // Default Location (on load)
 searchCity("Tokyo");
+
+displayForecast();
