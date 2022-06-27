@@ -39,7 +39,6 @@ function userDate(date) {
   } else {
     if (currentHour > 12) {
       currentHour = currentHour - 12;
-      currentMinute = `${currentMinute}PM`;
     }
   }
 
@@ -60,8 +59,8 @@ dateTime.innerHTML = userDate(new Date());
 
 function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
+  let days = ["mon", "tues", "wed", "thurs", "fri", "sat", "sun"];
   let day = date.getDay();
-  let days = ["sun", "mon", "tues", "wed", "thurs", "fri", "sat"];
 
   return days[day];
 }
@@ -108,9 +107,11 @@ function getForecast(coordinates) {
 
 function displayWeather(response) {
   document.querySelector("#userLocation").innerHTML = response.data.name;
-  let celsiusTemp = Math.round(response.data.main.temp);
-
-  document.querySelector("#current-temp-view").innerHTML = celsiusTemp;
+  //  let celsiusTemp = Math.round(response.data.main.temp);
+  // removed integration of celsiusTemp from current temp display below
+  document.querySelector("#current-temp-view").innerHTML = `${Math.round(
+    response.data.main.temp
+  )}℃`;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
@@ -124,25 +125,25 @@ function displayWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  // Convert Celsius to Fahrenheit
-  function updateToFahrenheitUnit(event) {
-    event.preventDefault();
-    let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-    let tempDisplay = document.querySelector("#current-temp-view");
-    tempDisplay.innerHTML = Math.round(fahrenheitTemp);
-  }
+  // Convert Celsius to Fahrenheit (feature removed)
+  // function updateToFahrenheitUnit(event) {
+  //    event.preventDefault();
+  //    let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  //    let tempDisplay = document.querySelector("#current-temp-view");
+  //    tempDisplay.innerHTML = Math.round(fahrenheitTemp);
+  //}
 
-  let fahrenheitSelector = document.querySelector("#temp-unit-far");
-  fahrenheitSelector.addEventListener("click", updateToFahrenheitUnit);
+  //  let fahrenheitSelector = document.querySelector("#temp-unit-far");
+  //  fahrenheitSelector.addEventListener("click", updateToFahrenheitUnit);
 
-  function updateToCelsiusUnit(event) {
-    event.preventDefault();
-    let tempDisplay = document.querySelector("#current-temp-view");
-    tempDisplay.innerHTML = celsiusTemp;
-  }
+  //  function updateToCelsiusUnit(event) {
+  //    event.preventDefault();
+  //    let tempDisplay = document.querySelector("#current-temp-view");
+  //    tempDisplay.innerHTML = celsiusTemp;
+  //  }
 
-  let celsiusSelector = document.querySelector("#temp-unit-cel");
-  celsiusSelector.addEventListener("click", updateToCelsiusUnit);
+  //  let celsiusSelector = document.querySelector("#temp-unit-cel");
+  //  celsiusSelector.addEventListener("click", updateToCelsiusUnit);
 
   getForecast(response.data.coord);
 }
@@ -180,8 +181,8 @@ function getGeolocation(event) {
 let currentLocationButton = document.querySelector("#find-location");
 currentLocationButton.addEventListener("click", getGeolocation);
 
-// Default temp (on load)
-let celsiusTemp = null;
+// Default temp (on load - removed)
+//let celsiusTemp = null;
 
 // Default Location (on load)
 searchCity("Tokyo");

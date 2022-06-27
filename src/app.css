@@ -10,36 +10,30 @@ h1 {
   font-size: 55px;
   position: relative;
   top: 80px;
-  left: 80px;
+  left: 55px;
 }
 .main-icon {
-  font-size: 100px;
+  width: 55px;
   position: relative;
   top: 60px;
-  left: 120px;
+  left: 140px;
   padding: 0 0 28px 0;
-}
-
-.temp-unit {
-  font-size: 22px;
-  position: relative;
-  left: 155px;
-  top: 9px;
 }
 
 .current-temp-view {
   font-weight: 700;
 }
 .windRain {
-  font-size: 16px;
+  font-size: 11px;
   line-height: 5px;
   position: relative;
   top: 100px;
-  left: 80px;
+  left: 50px;
 }
 .statusBar {
   font-size: 14px;
   text-align: center;
+  margin: 30px 0 0 0;
   position: relative;
   top: 30px;
 }
@@ -50,7 +44,7 @@ h1 {
 }
 
 .forecast {
-  margin: 50px 0 0 20px;
+  margin: 40px 0 0 20px;
 }
 
 .forecast-day {
@@ -88,7 +82,7 @@ form {
   color: #bbdb97;
   background: #fff;
   position: relative;
-  left: 140px;
+  left: 125px;
   bottom: 10px;
   border: 1px solid #bbdb97;
   border-radius: 35px;
