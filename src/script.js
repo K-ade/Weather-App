@@ -35,7 +35,7 @@ function userDate(date) {
 
   // Format hours and minutes
   if (currentHour < 10) {
-    let currentHour = `0${currentHour}`;
+    currentHour = `0${currentHour}`;
   } else {
     if (currentHour > 12) {
       currentHour = currentHour - 12;
